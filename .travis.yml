@@ -1,0 +1,11 @@
+sudo: required
+language: generic
+
+services:
+  - docker
+
+before_install:
+  - docker build -t zanons/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true zanons/docker-react npm run test
